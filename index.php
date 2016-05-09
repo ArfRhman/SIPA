@@ -1,467 +1,292 @@
-<!DOCTYPE html>
-<html>
+<?php
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP
+ *
+ * This content is released under the MIT License (MIT)
+ *
+ * Copyright (c) 2014 - 2015, British Columbia Institute of Technology
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * @package	CodeIgniter
+ * @author	EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
+ * @copyright	Copyright (c) 2014 - 2015, British Columbia Institute of Technology (http://bcit.ca/)
+ * @license	http://opensource.org/licenses/MIT	MIT License
+ * @link	http://codeigniter.com
+ * @since	Version 1.0.0
+ * @filesource
+ */
 
-<head>
-    <title>Flat Admin V.2 - Free Bootstrap Admin Templates</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-    <!-- CSS Libs -->
-    <link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/bootstrap-switch.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/checkbox3.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/dataTables.bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="lib/css/select2.min.css">
-    <!-- CSS App -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/themes/flat-blue.css">
-    <style type="text/css">
-     .navbar {
-    padding-left: 0px;
-    }</style>
-</head>
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ */
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
-<body class="flat-blue">
-    <div class="app-containers">
-        <div class="row content-container">
-            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-expand-toggle">
-                            <i class="fa fa-bars icon"></i>
-                        </button>
-                        <ol class="breadcrumb navbar-breadcrumb">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-th icon"></i>
-                        </button>
-                    </div>
-                    <ul class="nav navbar-nav navbar-right">
-                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
-                            <i class="fa fa-times icon"></i>
-                        </button>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
-                            <ul class="dropdown-menu animated fadeInDown">
-                                <li class="title">
-                                    Notification <span class="badge pull-right">0</span>
-                                </li>
-                                <li class="message">
-                                    No new notification
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown danger">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
-                            <ul class="dropdown-menu danger  animated fadeInDown">
-                                <li class="title">
-                                    Notification <span class="badge pull-right">4</span>
-                                </li>
-                                <li>
-                                    <ul class="list-group notifications">
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item message">
-                                                view all
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
-                            <ul class="dropdown-menu animated fadeInDown">
-                                <li class="profile-img">
-                                    <img src="../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
-                                </li>
-                                <li>
-                                    <div class="profile-info">
-                                        <h4 class="username">Emily Hart</h4>
-                                        <p>emily_hart@email.com</p>
-                                        <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="side-menu sidebar-inverse" style="margin-top: 60px;">
-                <nav class="navbar navbar-default" role="navigation">
-                    <div class="side-menu-container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">
-                                <div class="icon "><img src="../img/opl.png" width="45px"></div>
-                                <div class="title">Sistem Monitoring</div>
-                            </a>
-                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
-                                <i class="fa fa-times icon"></i>
-                            </button>
-                        </div>
-                        <ul class="nav navbar-nav">
-                            <li class="active">
-                                <a href="index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="ui-kits/theming.html">Theming</a>
-                                            </li>
-                                            <li><a href="ui-kits/grid.html">Grid</a>
-                                            </li>
-                                            <li><a href="ui-kits/button.html">Buttons</a>
-                                            </li>
-                                            <li><a href="ui-kits/card.html">Cards</a>
-                                            </li>
-                                            <li><a href="ui-kits/list.html">Lists</a>
-                                            </li>
-                                            <li><a href="ui-kits/modal.html">Modals</a>
-                                            </li>
-                                            <li><a href="ui-kits/alert.html">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="ui-kits/panel.html">Panels</a>
-                                            </li>
-                                            <li><a href="ui-kits/loader.html">Loaders</a>
-                                            </li>
-                                            <li><a href="ui-kits/step.html">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="ui-kits/other.html">Other</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-table" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="table/table.html">Table</a>
-                                            </li>
-                                            <li><a href="table/datatable.html">Datatable</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-form" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="form/ui-kits.html">Form UI Kits</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="component-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="components/pricing-table.html">Pricing Table</a>
-                                            </li>
-                                            <li><a href="components/chartjs.html">Chart.JS</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-example">
-                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="pages/login.html">Login</a>
-                                            </li>
-                                            <li><a href="pages/index.html">Landing Page</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-icon">
-                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-icon" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="icons/glyphicons.html">Glyphicons</a>
-                                            </li>
-                                            <li><a href="icons/font-awesome.html">Font Awesomes</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="license.html">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </nav>
-            </div>
-            <!-- Main Content -->
-            <div class="app-container-slide">
-            <div class="container-fluid">
-                <div class="side-body padding-top">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <div class="card red summary-inline">
-                                    <div class="card-body">
-                                        <i class="icon fa fa-inbox fa-4x"></i>
-                                        <div class="content">
-                                            <div class="title">50</div>
-                                            <div class="sub-title">New Mails</div>
-                                        </div>
-                                        <div class="clear-both"></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <div class="card yellow summary-inline">
-                                    <div class="card-body">
-                                        <i class="icon fa fa-comments fa-4x"></i>
-                                        <div class="content">
-                                            <div class="title">23</div>
-                                            <div class="sub-title">New Message</div>
-                                        </div>
-                                        <div class="clear-both"></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <div class="card green summary-inline">
-                                    <div class="card-body">
-                                        <i class="icon fa fa-tags fa-4x"></i>
-                                        <div class="content">
-                                            <div class="title">280</div>
-                                            <div class="sub-title">Product View</div>
-                                        </div>
-                                        <div class="clear-both"></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                            <a href="#">
-                                <div class="card blue summary-inline">
-                                    <div class="card-body">
-                                        <i class="icon fa fa-share-alt fa-4x"></i>
-                                        <div class="content">
-                                            <div class="title">16</div>
-                                            <div class="sub-title">Share</div>
-                                        </div>
-                                        <div class="clear-both"></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row  no-margin-bottom">
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="card primary">
-                                        <div class="card-jumbotron no-padding">
-                                            <canvas id="jumbotron-line-chart" class="chart no-padding"></canvas>
-                                        </div>
-                                        <div class="card-body half-padding">
-                                            <h4 class="float-left no-margin font-weight-300">Profits</h4>
-                                            <h2 class="float-right no-margin font-weight-300">$3200</h2>
-                                            <div class="clear-both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="thumbnail no-margin-bottom">
-                                        <img src="../img/thumbnails/picjumbo.com_IMG_4566.jpg" class="img-responsive">
-                                        <div class="caption">
-                                            <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="thumbnail no-margin-bottom">
-                                        <img src="../img/thumbnails/picjumbo.com_IMG_3241.jpg" class="img-responsive">
-                                        <div class="caption">
-                                            <h3 id="thumbnail-label">Thumbnail label<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-                                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                            <p><a href="#" class="btn btn-success" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-xs-12">
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="card primary">
-                                        <div class="card-jumbotron no-padding">
-                                            <canvas id="jumbotron-bar-chart" class="chart no-padding"></canvas>
-                                        </div>
-                                        <div class="card-body half-padding">
-                                            <h4 class="float-left no-margin font-weight-300">Orders</h4>
-                                            <div class="clear-both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="card primary">
-                                        <div class="card-jumbotron no-padding">
-                                            <canvas id="jumbotron-line-2-chart" class="chart no-padding"></canvas>
-                                        </div>
-                                        <div class="card-body half-padding">
-                                            <h4 class="float-left no-margin font-weight-300">Pages view</h4>
-                                            <div class="clear-both"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card card-success">
-                                <div class="card-header">
-                                    <div class="card-title">
-                                        <div class="title"><i class="fa fa-comments-o"></i> Last Message</div>
-                                    </div>
-                                    <div class="clear-both"></div>
-                                </div>
-                                <div class="card-body no-padding">
-                                    <ul class="message-list">
-                                        <a href="#">
-                                            <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                                <div class="message-block">
-                                                    <div><span class="username">Tui2Tone</span> <span class="message-datetime">12 min ago</span>
-                                                    </div>
-                                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                                </div>
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                                <div class="message-block">
-                                                    <div><span class="username">Tui2Tone</span> <span class="message-datetime">15 min ago</span>
-                                                    </div>
-                                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                                </div>
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                                <div class="message-block">
-                                                    <div><span class="username">Tui2Tone</span> <span class="message-datetime">2 hour ago</span>
-                                                    </div>
-                                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                                </div>
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li>
-                                                <img src="../img/profile/profile-1.jpg" class="profile-img pull-left">
-                                                <div class="message-block">
-                                                    <div><span class="username">Tui2Tone</span> <span class="message-datetime">1 day ago</span>
-                                                    </div>
-                                                    <div class="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</div>
-                                                </div>
-                                            </li>
-                                        </a>
-                                        <a href="#" id="message-load-more">
-                                            <li class="text-center load-more">
-                                                <i class="fa fa-refresh"></i> load more..
-                                            </li>
-                                        </a>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <footer class="app-footer">
-            <div class="wrapper">
-                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> © 2015 Copyright.
-            </div>
-        </footer>
-        <div>
-            <!-- Javascript Libs -->
-            <script type="text/javascript" src="lib/js/jquery.min.js"></script>
-            <script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="../lib/js/Chart.min.js"></script>
-            <script type="text/javascript" src="../lib/js/bootstrap-switch.min.js"></script>
-            <script type="text/javascript" src="../lib/js/jquery.matchHeight-min.js"></script>
-            <script type="text/javascript" src="../lib/js/jquery.dataTables.min.js"></script>
-            <script type="text/javascript" src="../lib/js/dataTables.bootstrap.min.js"></script>
-            <script type="text/javascript" src="../lib/js/select2.full.min.js"></script>
-            <script type="text/javascript" src="../lib/js/ace/ace.js"></script>
-            <script type="text/javascript" src="../lib/js/ace/mode-html.js"></script>
-            <script type="text/javascript" src="../lib/js/ace/theme-github.js"></script>
-            <!-- Javascript -->
-            <script type="text/javascript" src="js/app.js"></script>
-            <script type="text/javascript" src="js/index.js"></script>
-</body>
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+switch (ENVIRONMENT)
+{
+	case 'development':
+		error_reporting(-1);
+		ini_set('display_errors', 1);
+	break;
 
-</html>
+	case 'testing':
+	case 'production':
+		ini_set('display_errors', 0);
+		if (version_compare(PHP_VERSION, '5.3', '>='))
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
+		}
+		else
+		{
+			error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+		}
+	break;
+
+	default:
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'The application environment is not set correctly.';
+		exit(1); // EXIT_ERROR
+}
+
+/*
+ *---------------------------------------------------------------
+ * SYSTEM FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" folder.
+ * Include the path if the folder is not in the same directory
+ * as this file.
+ */
+	$system_path = 'system';
+
+/*
+ *---------------------------------------------------------------
+ * APPLICATION FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * folder than the default one you can set its name here. The folder
+ * can also be renamed or relocated anywhere on your server. If
+ * you do, use a full server path. For more info please see the user guide:
+ * http://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ */
+	$application_folder = 'application';
+
+/*
+ *---------------------------------------------------------------
+ * VIEW FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * If you want to move the view folder out of the application
+ * folder set the path to the folder here. The folder can be renamed
+ * and relocated anywhere on your server. If blank, it will default
+ * to the standard location inside your application folder. If you
+ * do move this, use the full server path to this folder.
+ *
+ * NO TRAILING SLASH!
+ */
+	$view_folder = '';
+
+
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here. For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT: If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller. Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ */
+	// The directory name, relative to the "controllers" folder.  Leave blank
+	// if your controller is not in a sub-folder within the "controllers" folder
+	// $routing['directory'] = '';
+
+	// The controller class file name.  Example:  mycontroller
+	// $routing['controller'] = '';
+
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
+
+
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
+
+
+
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
+
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
+
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (($_temp = realpath($system_path)) !== FALSE)
+	{
+		$system_path = $_temp.'/';
+	}
+	else
+	{
+		// Ensure there's a trailing slash
+		$system_path = rtrim($system_path, '/').'/';
+	}
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your system folder path does not appear to be set correctly. Please open the following file and correct this: '.pathinfo(__FILE__, PATHINFO_BASENAME);
+		exit(3); // EXIT_CONFIG
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// Path to the system folder
+	define('BASEPATH', str_replace('\\', '/', $system_path));
+
+	// Path to the front controller (this file)
+	define('FCPATH', dirname(__FILE__).'/');
+
+	// Name of the "system folder"
+	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
+
+	// The path to the "application" folder
+	if (is_dir($application_folder))
+	{
+		if (($_temp = realpath($application_folder)) !== FALSE)
+		{
+			$application_folder = $_temp;
+		}
+
+		define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
+	}
+	else
+	{
+		if ( ! is_dir(BASEPATH.$application_folder.DIRECTORY_SEPARATOR))
+		{
+			header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+			echo 'Your application folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+			exit(3); // EXIT_CONFIG
+		}
+
+		define('APPPATH', BASEPATH.$application_folder.DIRECTORY_SEPARATOR);
+	}
+
+	// The path to the "views" folder
+	if ( ! is_dir($view_folder))
+	{
+		if ( ! empty($view_folder) && is_dir(APPPATH.$view_folder.DIRECTORY_SEPARATOR))
+		{
+			$view_folder = APPPATH.$view_folder;
+		}
+		elseif ( ! is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
+		{
+			header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+			echo 'Your view folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+			exit(3); // EXIT_CONFIG
+		}
+		else
+		{
+			$view_folder = APPPATH.'views';
+		}
+	}
+
+	if (($_temp = realpath($view_folder)) !== FALSE)
+	{
+		$view_folder = $_temp.DIRECTORY_SEPARATOR;
+	}
+	else
+	{
+		$view_folder = rtrim($view_folder, '/\\').DIRECTORY_SEPARATOR;
+	}
+
+	define('VIEWPATH', $view_folder);
+
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ */
+require_once BASEPATH.'core/CodeIgniter.php';

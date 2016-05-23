@@ -1,7 +1,7 @@
 $(function() {
   $(".navbar-expand-toggle").click(function() {
     $(".app-containers").toggleClass("expanded");
-    return $(".navbar-expand-toggle").toggleClass("fa-rotate-45");
+    return $(".navbar-expand-toggle").toggleClass("fa-rotate-90");
   });
   return $(".navbar-right-expand-toggle").click(function() {
     $(".navbar-right").toggleClass("expanded");

@@ -144,7 +144,7 @@
                             </li>
 
                             <li class="list">
-                                <a href="index.html">
+                                <a href="<?=base_url()?>Pagu">
                                     <span class="icon fa fa-money"></span><span class="title">Pagu</span>
                                 </a>
                             </li>

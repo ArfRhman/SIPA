@@ -138,13 +138,13 @@
                         </div>
                         <ul class="nav navbar-nav" style="font-size: 20px;">
                             <li class="active list">
-                                <a href="index.html">
+                                <a href="<?php echo base_url() ?>dashboard">
                                     <span class="icon fa fa-tachometer"></span><span class="title">Home</span>
                                 </a>
                             </li>
 
                             <li class="list">
-                                <a href="index.html">
+                                <a href="<?php echo base_url() ?>dashboard/test">
                                     <span class="icon fa fa-money"></span><span class="title">Pagu</span>
                                 </a>
                             </li>

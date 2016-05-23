@@ -14,5 +14,11 @@ class Dashboard extends CI_Controller {
 		$this->load->view('bottom');
 
 	}
+	public function test(){
+		$this->load->view('top');
+		$this->load->view("second-top");
+		$this->load->view('bottom');
+
+	}
 	
 }

@@ -114,7 +114,7 @@ box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="step1-2" aria-labelledby="home-tab">
                                                 <p>
-                                                  <button type="button" class="btn btn-default btn-shadow"><i class="fa fa-file-text-o"></i> Dokumen Pengadaan 1</button>
+                                                  <button type="button" class="btn btn-default btn-shadow"><i class="fa fa-file-text-o"  data-toggle="tooltip" data-placement="left" data-html="true" title="123"></i> Dokumen Pengadaan 1</button>
                                                    <button type="button" class="btn btn-default btn-shadow"><i class="fa fa-file-text-o"></i> Dokumen Pengadaan 2</button>
                                                     <button type="button" class="btn btn-default btn-shadow"><i class="fa fa-file-text-o"></i> Dokumen Pengadaan 3</button>
 
